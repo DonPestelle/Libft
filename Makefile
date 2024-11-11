@@ -6,34 +6,32 @@
 #    By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 20:44:16 by pestell2          #+#    #+#              #
-#    Updated: 2024/11/10 20:53:22 by pestell2         ###   ########.fr        #
+#    Updated: 2024/11/11 17:19:40 by pestell2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	  =    libft.a
+NAME    =    libft.a
 AR        =    ar
-ARFLAGS   =    -rcs
+ARFLAGS    =    -rcs
 CC        =    cc
 CFLAGS    =    -Wall -Wextra -Werror
 
-OBJDIR  = build
-SRCS    = ft_isdigit.c
+OBJDIR    = build
+SRCS    = ft_isdigit.c ft_bzero.c
 OBJS    = $(addprefix $(OBJDIR)/, ${SRCS:.c=.o})
 
 PURPLE = \033[0;35m
 BLUE   = \033[0;34m
 RESET  = \033[m
 
-$(OBJDIR)/%.o : %.c
+all: $(NAME)
+
+$(OBJS): $(OBJDIR)/%.o : %.c libft.h | $(OBJDIR)
 	@printf "%-42b%b" "$(PURPLE)$(<):" "$(BLUE)$(@F)$(RESET)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
-
-$(OBJS): | $(OBJDIR)
-
 $(OBJDIR):
-	 @mkdir $(OBJDIR)
+	@mkdir $(OBJDIR)
 
 $(NAME): $(OBJS)
 	@printf "%-42b%b" "$(PURPLE)$(*F):" "$(BLUE)$(@)$(RESET)\n"
