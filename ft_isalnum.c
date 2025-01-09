@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 16:10:23 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/08 12:16:06 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/08 12:19:21 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/08 12:38:08 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_isalnum(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	if (ft_isalpha(c) != 0 || ft_isdigit(c) != 0)
+		return (1);
+	return (0);
 }
+
 /*
 int	main(void)
 {
-	size_t	n;
-	char	s[5] = {1, 2, 3};
-
-	n = 2;
-	printf("%p\n", s);
-	ft_bzero(s, n);
-	printf("%p\n", s);
+	printf("%d\n", ft_isalnum('c'));
+	printf("%d\n", isalnum('c'));
 	return (0);
 }*/

@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 16:10:23 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/08 12:16:06 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/08 14:45:20 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/08 14:53:28 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
+	while (*s != '\0' && c != *s)
+		s++;
+	if (c == *s)
+		return ((char *)s);
+	return (0);
 }
 /*
 int	main(void)
 {
-	size_t	n;
-	char	s[5] = {1, 2, 3};
+	const char	s[11] = "Hola amigos";
+	char		c;
 
-	n = 2;
-	printf("%p\n", s);
-	ft_bzero(s, n);
-	printf("%p\n", s);
+	c = 'a';
+	printf("s=%s\t", s);
+	printf("c=%c\n", c);
+	printf("strchr=%s\n", ft_strchr(s, c));
 	return (0);
 }*/
