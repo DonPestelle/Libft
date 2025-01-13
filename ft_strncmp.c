@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 16:10:23 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/08 12:16:06 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/08 14:42:00 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/09 15:12:19 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
+	while (s1[i] == s2[i] && s1[i] && s2[i] && i < n)
 		i++;
-	}
+	return (s1[i] - s2[i]);
 }
 /*
-int	main(void)
+int	main(int av, char **ac)
 {
-	size_t	n;
-	char	s[5] = {1, 2, 3};
+	int	e;
 
-	n = 2;
-	printf("%p\n", s);
-	ft_bzero(s, n);
-	printf("%p\n", s);
-	return (0);
+	if (av != 4)
+		return 0;
+	e = atoi(ac[3]);
+	printf("%d\n", ft_strncmp(ac[1], ac[2], e - 1));
+	return 0;
 }*/
