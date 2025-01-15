@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 15:48:02 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/09 16:08:43 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/13 17:07:05 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/13 17:21:39 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	while (!*(unsigned char *)s)
-		return (0);
-	while (n-- > 0)
-		*(unsigned char *)s++ = (unsigned char)c;
-	return (s);
+	char *result;
+
+	result = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	if (!(result))
+		return (NULL);
+	ft_strlcpy(result, s, ft_strlen((char *)s) + 1);
+	result[ft_strlen((char *)s)] = '\0';
+	return (result);
 }
-/*
-int	main(void)
+
+/*int	main()
 {
-	char str[] = "hola";
-	ft_memset((void *)str, 'c', 2);
-	printf("%s\n", str);
-	return (0);
+	const char *s = "hola";
+
+	printf("%s", ft_strdup(s));
+	return 0;
 }*/
