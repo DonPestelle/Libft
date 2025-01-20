@@ -6,7 +6,7 @@
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:07:05 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/13 17:21:39 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:19:57 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strdup(const char *s)
 {
-	char *result;
+	char	*result;
 
 	result = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
 	if (!(result))

@@ -1,39 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 14:42:38 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/15 16:59:13 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/16 12:38:02 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/16 15:41:59 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	*mem;
+	int	digit;
 
-	mem = malloc(nmemb * size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, nmemb * size);
-	return ((void *)mem);
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		ft_putnbr_fd(-n, fd);
+	}
+	else
+	{
+		if (n > 9)
+		{
+			ft_putnbr_fd(n / 10, fd);
+			ft_putnbr_fd(n % 10, fd);
+		}
+		else
+		{
+			digit = n + 48;
+			write(fd, &digit, 1);
+		}
+	}
 }
 /*
 int	main(void)
 {
-	int *ptr = ft_calloc(10, sizeof(int));
-	int	*ptr2 = malloc(10 * sizeof(int));
+	int fd = 1;
+	int numero = 12345;
 
-	printf("%p\n", ptr);
-	printf("%p\n", ptr2);
-
-	free(ptr);
-	free(ptr2);
+	ft_putnbr_fd(numero, fd);
 
 	return (0);
-}
-*/
+}*/

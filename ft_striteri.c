@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 14:42:38 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/15 16:59:13 by pestell2         ###   ########.fr       */
+/*   Created: 2025/01/16 12:10:00 by pestell2          #+#    #+#             */
+/*   Updated: 2025/01/16 12:17:34 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	*mem;
+	unsigned int	i;
 
-	mem = malloc(nmemb * size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, nmemb * size);
-	return ((void *)mem);
+	i = 0;
+	while ((int)i != ft_strlen(s))
+	{
+		f(i, &s[i]);
+		i++;
+	}
+	return ;
 }
 /*
+void	print_index_and_char(unsigned int index, char *c)
+{
+	printf("Index: %u, Character: %c\n", index, *c);
+}
+
 int	main(void)
 {
-	int *ptr = ft_calloc(10, sizeof(int));
-	int	*ptr2 = malloc(10 * sizeof(int));
+	char	str[] = "Hello, World!";
 
-	printf("%p\n", ptr);
-	printf("%p\n", ptr2);
-
-	free(ptr);
-	free(ptr2);
-
+	ft_striteri(str, print_index_and_char);
 	return (0);
-}
-*/
+}*/

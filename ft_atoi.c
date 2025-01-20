@@ -6,20 +6,21 @@
 /*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:15:03 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/15 12:11:16 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/16 10:04:25 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int	res;
 	int	sign;
 
 	res = 0;
 	sign = 1;
-	while (*str == ' ' || *str == '\n' || *str == '\t')
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\r'
+		|| *str == '\v' || *str == '\f')
 		str++;
 	if (*str == '-' || *str == '+')
 	{
@@ -36,10 +37,13 @@ int ft_atoi(const char *str)
 	}
 	return (res * sign);
 }
+/*
 int	main(void)
 {
-    const char* str = "12345";
-    int num = ft_atoi(str);
-    printf("Converted integer: %d\n", num);
-    return (0);
-}
+	const char	*str = "12345";
+	int			num;
+
+	num = ft_atoi(str);
+	printf("Converted integer: %d\n", num);
+	return (0);
+}*/

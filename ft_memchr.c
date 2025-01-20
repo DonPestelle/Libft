@@ -6,7 +6,7 @@
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:12:57 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/09 15:44:38 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:10:58 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	while (*(const unsigned char *)str != (unsigned char)c && 0 < n)
+	while (*(const unsigned char *)str != (unsigned char)c && 0 < (n - 1))
 	{
 		n--;
 		str++;
@@ -24,17 +24,23 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	return (NULL);
 }
 /*
+void	ft_print_result(const char *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
 int main() {
-   const char str1[] = "abcdef";
-   const char ch = 'd';
+   const char *str;
 
-   char* result = (char*)ft_memchr(str1, ch, strlen(str1));
-
-   if (result != NULL) {
-       printf("'%c' found at position %ld\n", ch, result - str1);
-   } else {
-       printf("'%c' not found in the string\n", ch);
-   }
-
-   return 0;
+   str = ft_memchr("bonjourno", 'n', 2);
+	if (!str)
+		ft_print_result("NULL");
+	else
+		ft_print_result(str);
+	return 0;
 }*/
