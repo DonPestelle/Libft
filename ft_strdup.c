@@ -6,7 +6,7 @@
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:07:05 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/15 15:19:57 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:11:17 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char	*ft_strdup(const char *s)
 {
 	char	*result;
 
-	result = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	result = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!(result))
 		return (NULL);
-	ft_strlcpy(result, s, ft_strlen((char *)s) + 1);
-	result[ft_strlen((char *)s)] = '\0';
+	ft_strlcpy(result, s, ft_strlen(s) + 1);
+	result[ft_strlen(s)] = '\0';
 	return (result);
 }
 

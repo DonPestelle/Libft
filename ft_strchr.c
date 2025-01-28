@@ -6,7 +6,7 @@
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 14:45:20 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/08 14:53:28 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:07:43 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0' && c != *s)
+	unsigned char	uc;
+
+	uc = (unsigned char)c;
+	while (*s != '\0' && uc != *s)
 		s++;
-	if (c == *s)
+	if (uc == *s)
 		return ((char *)s);
 	return (0);
 }
+
 /*
 int	main(void)
 {

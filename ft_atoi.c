@@ -6,7 +6,7 @@
 /*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:15:03 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/16 10:04:25 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:24:12 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 /*
+#include <stdio.h>
+
 int	main(void)
 {
 	const char	*str = "12345";

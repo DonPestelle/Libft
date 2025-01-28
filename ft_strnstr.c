@@ -6,7 +6,7 @@
 /*   By: pestell2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 15:51:15 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/13 14:14:19 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:12:45 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	if (*little == '\0')
 		return ((char *)big);
-	i = ft_strlen((char *)little);
+	i = ft_strlen(little);
 	if (i > len)
 		return (NULL);
 	while (*big && len >= i)

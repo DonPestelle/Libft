@@ -6,7 +6,7 @@
 /*   By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:03:59 by pestell2          #+#    #+#             */
-/*   Updated: 2025/01/20 18:39:49 by pestell2         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:50:08 by pestell2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-	struct s_list	*prev;
-}					t_list;
-
 /*____________Functions 1____________*/
 
 void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
 int					ft_isdigit(char c);
-int					ft_strlen(char *str);
-int					ft_strncmp(char *s1, char *s2, unsigned int n);
+int					ft_strlen(const char *str);
+int					ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isprint(int c);
@@ -63,6 +56,13 @@ void				ft_putnbr_fd(int n, int fd);
 char				*ft_itoa(int n);
 char				**ft_split(const char *s, char c);
 char				*ft_strtrim(char const *s1, char const *set);
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+	struct s_list	*prev;
+}					t_list;
 
 /*____________Functions BONUS!____________*/
 t_list				*ft_lstnew(void *content);
