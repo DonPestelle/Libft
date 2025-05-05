@@ -1,75 +1,95 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: pestell2 <pestell2@student.42barcelona.co  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/10 20:44:16 by pestell2          #+#    #+#              #
-#    Updated: 2025/01/27 16:02:19 by pestell2         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# Standard
+NAME			= libft.a
 
-NAME    =    libft.a
-AR       =    ar
-ARFLAGS    =    -rcs
-CC        =    cc
-CFLAGS    =    -Wall -Wextra -Werror
+# Directories
+INC				= inc/
+SRC_DIR			= src/
+OBJ_DIR			= obj/
 
-OBJDIR    = build
+# Compielr and Flags
+CC				= gcc
+CFLAGS			= -Wall -Wextra -Werror -I
+RM				= rm -f
+AR				= ar rcs
 
-SRCS = ft_atoi.c     ft_itoa.c   		 ft_putendl_fd.c  ft_strlcat.c \
-	   ft_bzero.c    ft_putnbr_fd.c      ft_strlcpy.c     ft_tolower.c \
-	   ft_calloc.c   ft_memchr.c         ft_putstr_fd.c   ft_strlen.c \
-	   ft_toupper.c  ft_isalnum.c        ft_memcmp.c      ft_split.c \
-	   ft_strmapi.c  ft_isalpha.c        ft_memcpy.c      ft_strchr.c \
-	   ft_isascii.c  ft_memmove.c        ft_strdup.c      ft_strnstr.c \
-	   ft_isdigit.c  ft_memset.c         ft_striteri.c    ft_strrchr.c \
-	   ft_isprint.c  ft_putchar_fd.c     ft_strjoin.c     ft_strtrim.c \
-	   ft_strncmp.c	 ft_substr.c
+# Source Files
+FTIS_DIR		=	$(SRC_DIR)ft_is/ft_isalnum.c \
+					$(SRC_DIR)ft_is/ft_isalpha.c \
+					$(SRC_DIR)ft_is/ft_isascii.c \
+					$(SRC_DIR)ft_is/ft_isdigit.c \
+					$(SRC_DIR)ft_is/ft_isprint.c 
 
+FTMEM_DIR		=	$(SRC_DIR)ft_mem/ft_bzero.c \
+					$(SRC_DIR)ft_mem/ft_calloc.c \
+					$(SRC_DIR)ft_mem/ft_memchr.c \
+					$(SRC_DIR)ft_mem/ft_memcmp.c \
+					$(SRC_DIR)ft_mem/ft_memmove.c \
+					$(SRC_DIR)ft_mem/ft_memset.c 
 
-B_SRCS	= ft_lstadd_back_bonus.c   ft_lstclear_bonus.c   ft_lstiter_bonus.c  ft_lstmap_bonus.c \
-		  ft_lstsize_bonus.c  ft_lstadd_front_bonus.c  ft_lstdelone_bonus.c  ft_lstlast_bonus.c  ft_lstnew_bonus.c
+FTPUT_DIR		=	$(SRC_DIR)ft_put/ft_putchar_fd.c \
+					$(SRC_DIR)ft_put/ft_putendl_fd.c \
+					$(SRC_DIR)ft_put/ft_putnbr_fd.c \
+					$(SRC_DIR)ft_put/ft_putstr_fd.c 
 
-OBJS    = $(addprefix $(OBJDIR)/, ${SRCS:.c=.o})
-B_OBJS    = $(addprefix $(OBJDIR)/, ${B_SRCS:.c=.o})
+FTTO_DIR		=	$(SRC_DIR)ft_to/ft_atoi.c \
+					$(SRC_DIR)ft_to/ft_itoa.c \
+					$(SRC_DIR)ft_to/ft_tolower.c \
+					$(SRC_DIR)ft_to/ft_toupper.c
 
-ifndef BONUS
-	OBJECTS = $(OBJS)
-else
-	OBJECTS = $(B_OBJS)
-endif
+FTSTR_DIR		=	$(SRC_DIR)ft_str/ft_split.c \
+					$(SRC_DIR)ft_str/ft_strchr.c \
+					$(SRC_DIR)ft_str/ft_strdup.c \
+					$(SRC_DIR)ft_str/ft_striteri.c \
+					$(SRC_DIR)ft_str/ft_strjoin.c \
+					$(SRC_DIR)ft_str/ft_strlcat.c \
+					$(SRC_DIR)ft_str/ft_strlcpy.c \
+					$(SRC_DIR)ft_str/ft_strlen.c \
+					$(SRC_DIR)ft_str/ft_strmapi.c \
+					$(SRC_DIR)ft_str/ft_strncmp.c \
+					$(SRC_DIR)ft_str/ft_strnstr.c \
+					$(SRC_DIR)ft_str/ft_strrchr.c \
+					$(SRC_DIR)ft_str/ft_strtrim.c \
+					$(SRC_DIR)ft_str/ft_substr.c 
 
-PURPLE = \033[0;35m
-BLUE   = \033[0;34m
-RESET  = \033[m
+FTLST_DIR		=	$(SRC_DIR)ft_lst/ft_lstadd_back.c \
+					$(SRC_DIR)ft_lst/ft_lstadd_front.c \
+					$(SRC_DIR)ft_lst/ft_lstclear.c \
+					$(SRC_DIR)ft_lst/ft_lstdelone.c \
+					$(SRC_DIR)ft_lst/ft_lstiter.c \
+					$(SRC_DIR)ft_lst/ft_lstlast.c \
+					$(SRC_DIR)ft_lst/ft_lstmap.c \
+					$(SRC_DIR)ft_lst/ft_lstnew.c \
+					$(SRC_DIR)ft_lst/ft_lstsize.c 
 
-all: $(NAME)
+FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
+					$(SRC_DIR)ft_printf/ft_pointer.c \
+					$(SRC_DIR)ft_printf/ft_numbers.c
 
-$(OBJDIR)/%.o: %.c libft.h Makefile | $(OBJDIR)
-	@printf "%-42b%b" "$(PURPLE)compiling $(<):" "$(BLUE)$(@F)$(RESET)\n"
-	@$(CC) $(CFLAGS) -c $< -o $@
+GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c 
 
-$(OBJDIR):
-	@mkdir $(OBJDIR)
+# Concatenate all source files
+SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
 
-$(NAME): $(OBJECTS)
-	@printf "%-42b%b" "$(PURPLE)building:" "$(BLUE)$(@)$(RESET)\n"
-	@$(AR) $(ARFLAGS) $@ $(OBJECTS)
-	
-bonus:
-	@make BONUS=42 --no-print-directory
+# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
+OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
-fclean: clean
-	@printf "%b" "$(BLUE)$(@)ing...$(RESET)\n"
-	@rm -rf $(NAME)
+# Build rules
+all: 			$(NAME)
+
+$(NAME): 		$(OBJ)
+				@$(AR) $(NAME) $(OBJ)
+
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				@mkdir -p $(@D)
+				@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	@printf "%b" "$(BLUE)$(@)ing...$(RESET)\n"
-	@rm -rf $(OBJDIR)
+				@$(RM) -r $(OBJ_DIR)
+				@$(RM) .cache_exists
 
-re:    fclean all
+fclean: 		clean
+				@$(RM) $(NAME)
 
-.PHONY: all clean fclean re
+re: 			fclean all
 
+.PHONY: 		all clean fclean re
